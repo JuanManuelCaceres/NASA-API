@@ -1,8 +1,14 @@
 import { View , Text , StyleSheet , Image, Button, Pressable, TouchableHighlight, TouchableOpacity} from "react-native"
 import { PostImage } from "@/types";
 import { FC } from "react";
+import { useRouter } from "expo-router";
 
-const TodaysImage:FC<PostImage> =({copyright,title,url,date})=>{
+const TodaysImage:FC<PostImage> =({copyright,title,url,date,explanation})=>{
+    const router = useRouter();
+    const handleViewPress = ()=>{
+        router.push({ pathname: '/(tabs)/detail', params: { title, url, date, copyright,explanation } });        
+    }
+
     return(
         <View style={styles.container}>
             <View>
@@ -10,11 +16,11 @@ const TodaysImage:FC<PostImage> =({copyright,title,url,date})=>{
             </View>
             <Text style={styles.title}>{title}</Text>
             <View style={styles.copyContainer}>
-                <Text style={styles.copyText}>Author: {copyright}</Text>
+                <Text style={styles.copyText}>Author: {copyright?copyright.trim():'unknown'}</Text>
                 <Text style={styles.copyText}>Date: {date}</Text>
             </View>
             <View style={styles.buttonContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={handleViewPress}>
                     <Text style={styles.buttonText}>View More</Text>
                 </TouchableOpacity>
             </View>

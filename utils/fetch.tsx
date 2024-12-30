@@ -1,4 +1,6 @@
-const API_KEY='Mhz8tp3BdgjfCvb3gE0iaEeQMMPo9LmvU2O14f9y';
+import API_KEY from "@/api-config/api-key";
+
+// const API_KEY=API_KEY; // redundant assignment removed
 const API_URI='https://api.nasa.gov/planetary/apod?api_key=';
 const API_APOD=`${API_URI}${API_KEY}`;
 
