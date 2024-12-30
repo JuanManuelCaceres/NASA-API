@@ -6,7 +6,6 @@ import { ScrollView } from "react-native";
 
 export default function Detail() {
     const { params } = useRoute();
-
     const { title, url, date, explanation, copyright  } = params as DetailProps;
     
     return (
